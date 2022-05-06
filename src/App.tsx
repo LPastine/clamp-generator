@@ -1,6 +1,5 @@
 import React from 'react';
-import Title from './components';
-import ForwardedInputField from './components/Input/input-field';
+import { CalculatorForm, Title } from './components';
 
 type Props = {};
 
@@ -8,7 +7,7 @@ const App = (props: Props) => {
   return (
     <>
       <Title />
-      <ForwardedInputField />
+      <CalculatorForm />
     </>
   );
 };
