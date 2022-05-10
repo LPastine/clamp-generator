@@ -50,8 +50,9 @@ function CalculatorForm() {
           `clamp(${firstTerm}rem, ${secondTerm}vw + ${thirdTerm}rem, ${fourthTerm}rem)`
         );
       } else {
+        thirdTerm = Math.abs(thirdTerm);
         console.log(
-          `clamp(${firstTerm}rem, ${secondTerm}vw ${thirdTerm}rem, ${fourthTerm}rem)`
+          `clamp(${firstTerm}rem, ${secondTerm}vw - ${thirdTerm}rem, ${fourthTerm}rem)`
         );
       }
     };
