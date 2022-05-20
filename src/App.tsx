@@ -1,5 +1,5 @@
 import React from 'react';
-import { CalculatorForm, Title } from './components';
+import { ClampFunction, Title, ClampForm } from './components';
 
 type Props = {};
 
@@ -7,7 +7,7 @@ const App = (props: Props) => {
   return (
     <>
       <Title />
-      <CalculatorForm />
+      <ClampForm />
     </>
   );
 };
