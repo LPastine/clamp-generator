@@ -1,5 +1,4 @@
-import React from 'react';
-import { ClampFunction, Title, ClampForm } from './components';
+import { Title, ClampForm } from './components';
 
 type Props = {};
 
