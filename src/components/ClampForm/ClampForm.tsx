@@ -1,55 +1,6 @@
-// Kindacode.com
 import React, { useEffect, useState } from 'react';
-import ClampFunction from '../ClampFunction/ClampFunction';
-
-const clampGenerator = (
-  minValueStr: string,
-  maxValueStr: string,
-  minVwStr: string,
-  maxVwStr: string,
-  defRemStr: string
-) => {
-  let minValue = parseInt(minValueStr);
-  let maxValue = parseInt(maxValueStr);
-  let minVw = parseInt(minVwStr);
-  let maxVw = parseInt(maxVwStr);
-  let defRem = parseInt(defRemStr);
-
-  let diffValues = maxValue - minValue;
-  let diffVw = maxVw - minVw;
-  let partialPreferred = 100 * diffValues;
-  let preferredValue = partialPreferred / diffVw;
-
-  let factor1 = minVw * maxValue;
-  let factor2 = maxVw * minValue;
-
-  let diffFactor = factor1 - factor2;
-  let diffVwInverse = minVw - maxVw;
-  let partialRelative = diffFactor / diffVwInverse;
-  let relativeValue = partialRelative / defRem;
-
-  let firstTerm = minValue / defRem;
-  firstTerm = parseFloat(firstTerm.toFixed(3));
-  let secondTerm = parseFloat(preferredValue.toFixed(3));
-  let thirdTerm = parseFloat(relativeValue.toFixed(3));
-  let fourthTerm = maxValue / defRem;
-  fourthTerm = parseFloat(fourthTerm.toFixed(3));
-
-  if (thirdTerm >= 0) {
-    console.log(
-      `clamp(${firstTerm}rem, ${secondTerm}vw + ${thirdTerm}rem, ${fourthTerm}rem)`
-    );
-    let clampFc = `clamp(${firstTerm}rem, ${secondTerm}vw + ${thirdTerm}rem, ${fourthTerm}rem)`;
-    return clampFc;
-  } else {
-    thirdTerm = Math.abs(thirdTerm);
-    console.log(
-      `clamp(${firstTerm}rem, ${secondTerm}vw - ${thirdTerm}rem, ${fourthTerm}rem)`
-    );
-    let clampFc = `clamp(${firstTerm}rem, ${secondTerm}vw - ${thirdTerm}rem, ${fourthTerm}rem)`;
-    return clampFc;
-  }
-};
+import ClampFunction from '../ClampFunction';
+import clampGenerator from '../../utils/clampGenerator';
 
 const ClampForm: React.FunctionComponent = () => {
   const [minValue, setMinValue] = useState('0');
@@ -67,13 +18,8 @@ const ClampForm: React.FunctionComponent = () => {
   const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    let resultClampFc = clampGenerator(
-      minValue,
-      maxValue,
-      minVw,
-      maxVw,
-      defRem
-    );
+    let formValues = { minValue, maxValue, minVw, maxVw, defRem };
+    let resultClampFc = clampGenerator(formValues);
 
     setClampFunction(resultClampFc);
     setShowResult(true);
