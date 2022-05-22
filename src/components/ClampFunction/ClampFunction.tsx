@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { MdContentCopy } from 'react-icons/md';
+import { ClampWrapper } from './styles';
 
 interface Props {
   clampFunction: string;
@@ -18,7 +19,7 @@ const ClampFunction: React.FC<Props> = ({ clampFunction }) => {
 
   return (
     <>
-      <div>{clampFunction}</div>
+      <ClampWrapper className="clampWrapper">{clampFunction}</ClampWrapper>
       <CopyToClipboard text={clampFunction} onCopy={onCopyText}>
         <span>{isCopied ? 'Copied!' : <MdContentCopy />}</span>
       </CopyToClipboard>

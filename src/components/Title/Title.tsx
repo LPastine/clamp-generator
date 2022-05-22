@@ -4,7 +4,7 @@ import { Header } from './styles';
 type Props = {};
 
 const Title = (props: Props) => {
-  return <Header>Clamp Generator</Header>;
+  return <Header className="title">CLAMP GENERATOR</Header>;
 };
 
 export default Title;

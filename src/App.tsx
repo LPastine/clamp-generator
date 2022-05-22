@@ -1,11 +1,10 @@
-import { Title, ClampForm } from './components';
+import { ClampForm } from './components';
 
 type Props = {};
 
 const App = (props: Props) => {
   return (
     <>
-      <Title />
       <ClampForm />
     </>
   );

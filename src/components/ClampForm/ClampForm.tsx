@@ -1,6 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import ClampFunction from '../ClampFunction';
 import clampGenerator from '../../utils/clampGenerator';
+import { Title } from '..';
+import {
+  Wrapper,
+  FormWrapper,
+  InputWrapper,
+  Form,
+  Grid,
+  InputLabel,
+  ResultWrapper,
+  SubmitButton,
+  Input,
+} from './styles';
 
 const ClampForm: React.FunctionComponent = () => {
   const [minValue, setMinValue] = useState('0');
@@ -26,49 +38,77 @@ const ClampForm: React.FunctionComponent = () => {
   };
 
   return (
-    <div className="formContainer">
-      <form onSubmit={submitForm}>
-        <input
-          value={minValue}
-          onChange={(e) => setMinValue(e.target.value)}
-          type="text"
-          placeholder="Minimum Value"
-          className="input"
-        />
-        <input
-          value={maxValue}
-          onChange={(e) => setMaxValue(e.target.value)}
-          type="text"
-          placeholder="Maximum Value"
-          className="input"
-        />
-        <input
-          value={minVw}
-          onChange={(e) => setMinVw(e.target.value)}
-          type="text"
-          placeholder="Minimum Viewport Width"
-          className="input"
-        />
-        <input
-          value={maxVw}
-          onChange={(e) => setMaxVw(e.target.value)}
-          type="text"
-          placeholder="Maximum Viewport Width"
-          className="input"
-        />
-        <input
-          value={defRem}
-          onChange={(e) => setDefRem(e.target.value)}
-          type="text"
-          placeholder="Default Rem Value"
-          className="input"
-        />
-        <button type="submit" className="btn">
-          Submit
-        </button>
-      </form>
-      {showResult ? <ClampFunction clampFunction={clampFunction} /> : null}
-    </div>
+    <Wrapper className="wrapper">
+      <Title />
+      <FormWrapper className="formWrapper">
+        <Form className="clampForm" onSubmit={submitForm}>
+          <Grid className="gridWrapper">
+            <InputWrapper className="inputWrapper">
+              <InputLabel className="inputLabel">Minimum Value (px)</InputLabel>
+              <Input
+                value={minValue}
+                onChange={(e) => setMinValue(e.target.value)}
+                type="text"
+                placeholder="Minimum Value"
+                className="input"
+              />
+            </InputWrapper>
+            <InputWrapper className="inputWrapper">
+              <InputLabel className="inputLabel">Maximum Value (px)</InputLabel>
+              <Input
+                value={maxValue}
+                onChange={(e) => setMaxValue(e.target.value)}
+                type="text"
+                placeholder="Maximum Value"
+                className="input"
+              />
+            </InputWrapper>
+            <InputWrapper className="inputWrapper">
+              <InputLabel className="inputLabel">
+                Minimum Viewport Width (px)
+              </InputLabel>
+              <Input
+                value={minVw}
+                onChange={(e) => setMinVw(e.target.value)}
+                type="text"
+                placeholder="Minimum Viewport Width"
+                className="input"
+              />
+            </InputWrapper>
+            <InputWrapper className="inputWrapper">
+              <InputLabel className="inputLabel">
+                Maximum Viewport Width (px)
+              </InputLabel>
+              <Input
+                value={maxVw}
+                onChange={(e) => setMaxVw(e.target.value)}
+                type="text"
+                placeholder="Maximum Viewport Width"
+                className="input"
+              />
+            </InputWrapper>
+            <InputWrapper className="inputWrapper">
+              <InputLabel className="inputLabel">
+                Default Rem Value (px)
+              </InputLabel>
+              <Input
+                value={defRem}
+                onChange={(e) => setDefRem(e.target.value)}
+                type="text"
+                placeholder="Default Rem Value"
+                className="input"
+              />
+            </InputWrapper>
+          </Grid>
+          <SubmitButton type="submit" className="submitButton">
+            Generate Clamp
+          </SubmitButton>
+        </Form>
+      </FormWrapper>
+      <ResultWrapper className="resultWrapper">
+        {showResult ? <ClampFunction clampFunction={clampFunction} /> : null}
+      </ResultWrapper>
+    </Wrapper>
   );
 };
 
