@@ -16,11 +16,11 @@ import {
 } from './styles';
 
 const ClampForm: React.FunctionComponent = () => {
-  const [minValue, setMinValue] = useState('0');
-  const [maxValue, setMaxValue] = useState('0');
-  const [minVw, setMinVw] = useState('0');
-  const [maxVw, setMaxVw] = useState('0');
-  const [defRem, setDefRem] = useState('0');
+  const [minValue, setMinValue] = useState('10');
+  const [maxValue, setMaxValue] = useState('20');
+  const [minVw, setMinVw] = useState('1026');
+  const [maxVw, setMaxVw] = useState('1920');
+  const [defRem, setDefRem] = useState('16');
   const [clampFunction, setClampFunction] = useState('');
   const [addCalc, setAddCalc] = useState(false);
   const [showResult, setShowResult] = useState(false);
