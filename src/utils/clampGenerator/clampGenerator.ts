@@ -4,6 +4,7 @@ interface FormValues {
   minVw: string;
   maxVw: string;
   defRem: string;
+  addCalc: boolean;
 }
 
 const clampGenerator = ({
@@ -12,6 +13,7 @@ const clampGenerator = ({
   minVw,
   maxVw,
   defRem,
+  addCalc
 }: FormValues) => {
   let minValueInt = parseInt(minValue);
   let maxValueInt = parseInt(maxValue);
@@ -40,18 +42,23 @@ const clampGenerator = ({
   fourthTerm = parseFloat(fourthTerm.toFixed(3));
 
   if (thirdTerm >= 0) {
-    console.log(
-      `clamp(${firstTerm}rem, ${secondTerm}vw + ${thirdTerm}rem, ${fourthTerm}rem)`
-    );
     let clampFc = `clamp(${firstTerm}rem, ${secondTerm}vw + ${thirdTerm}rem, ${fourthTerm}rem)`;
-    return clampFc;
+    if(addCalc) {
+      let calcClampFc = `calc(${clampFc})`
+      return calcClampFc
+    }
+    else {
+      return clampFc;
+    }
   } else {
     thirdTerm = Math.abs(thirdTerm);
-    console.log(
-      `clamp(${firstTerm}rem, ${secondTerm}vw - ${thirdTerm}rem, ${fourthTerm}rem)`
-    );
     let clampFc = `clamp(${firstTerm}rem, ${secondTerm}vw - ${thirdTerm}rem, ${fourthTerm}rem)`;
-    return clampFc;
+    if(addCalc) {
+      let calcClampFc = `calc(${clampFc})`
+      return calcClampFc
+    } else {
+      return clampFc;
+    }
   }
 };
 

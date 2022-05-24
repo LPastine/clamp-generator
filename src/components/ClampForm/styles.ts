@@ -13,7 +13,7 @@ export const FormWrapper = styled.div`
   margin: 0 auto;
   justify-content: center;
   align-items: center;
-  padding-bottom: 2rem;
+  padding-bottom: 3rem;
 `;
 
 export const InputWrapper = styled.div`
@@ -30,7 +30,7 @@ export const Form = styled.form`
   justify-content: center;
   align-items: center;
   width: 100%;
-  gap: 1.5rem;
+  gap: 2.5rem;
 `;
 
 export const Grid = styled.div`
@@ -42,8 +42,8 @@ export const Grid = styled.div`
 `;
 
 export const InputLabel = styled.div`
-  color: #3F3E42;
-  font-family: 'Questrial', sans-serif;
+  color: black;
+  font-family: 'Space Mono', monospace;
   font-weight: 500;
   font-size: 1.2rem;
 `;
@@ -51,26 +51,33 @@ export const InputLabel = styled.div`
 export const ResultWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  width: 70%;
+  width: auto;
   justify-content: center;
   align-items: center;
   gap: 1rem;
 `;
 
 export const SubmitButton = styled.button`
-  background-color: #09b000;
-  color: #0d3430;
+  background-color: #31ae15;
+  font-family: 'Space Mono', monospace;
+  color: black;
   font-size: 1.6rem;
-  font-family: 'Code', sans-serif;
-  padding: 0.75rem;
-  border-radius: 15px;
+  padding: 1.5rem;
+  border-radius: 100px;
   font-weight: 700;
-  border: none
+  border: none;
 `;
 
 export const Input = styled.input`
+  font-family: 'Space Mono', monospace;
   font-size: 1.3rem;
   line-height: 1.8rem;
   border-radius: 10px;
-  text-align: center
+  text-align: center;
+`;
+
+export const InputCheckbox = styled.input`
+  input[type='checkbox'] {
+    background-color: yellow;
+  }
 `;

@@ -12,6 +12,7 @@ import {
   ResultWrapper,
   SubmitButton,
   Input,
+  InputCheckbox,
 } from './styles';
 
 const ClampForm: React.FunctionComponent = () => {
@@ -21,16 +22,18 @@ const ClampForm: React.FunctionComponent = () => {
   const [maxVw, setMaxVw] = useState('0');
   const [defRem, setDefRem] = useState('0');
   const [clampFunction, setClampFunction] = useState('');
+  const [addCalc, setAddCalc] = useState(false);
   const [showResult, setShowResult] = useState(false);
 
   useEffect(() => {
+    setAddCalc(false);
     setShowResult(false);
   }, []);
 
   const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    let formValues = { minValue, maxValue, minVw, maxVw, defRem };
+    let formValues = { minValue, maxValue, minVw, maxVw, defRem, addCalc };
     let resultClampFc = clampGenerator(formValues);
 
     setClampFunction(resultClampFc);
@@ -97,6 +100,16 @@ const ClampForm: React.FunctionComponent = () => {
                 type="text"
                 placeholder="Default Rem Value"
                 className="input"
+              />
+            </InputWrapper>
+            <InputWrapper className="inputWrapper">
+              <InputLabel className="inputLabel">Add calc()</InputLabel>
+              <InputCheckbox
+                onChange={(e) => {
+                  addCalc ? setAddCalc(false) : setAddCalc(true);
+                }}
+                type="checkbox"
+                className="inputCheckbox"
               />
             </InputWrapper>
           </Grid>
